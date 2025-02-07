@@ -1,0 +1,155 @@
+#:kivy 1.0.9
+
+<MealPlanScreen>:
+    name: "mealplan"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(15)
+
+        Label:
+            text: "Customize Your Meal Plan"
+            font_size: "24sp"
+            bold: True
+            size_hint_y: None
+            height: dp(50)
+            halign: "center"
+
+        Label:
+            text: "Select Your Workout Goal"
+            font_size: "20sp"
+            size_hint_y: None
+            height: dp(40)
+
+        Spinner:
+            id: workout_goal_spinner
+            text: "Muscle Gain"
+            values: ["Muscle Gain", "Weight Loss", "Maintenance"]
+            size_hint_y: None
+            height: dp(40)
+            on_text: root.update_meals(workout_goal_spinner.text)
+
+        Label:
+            text: "Suggested Meals for Your Goal"
+            font_size: "22sp"
+            bold: True
+            size_hint_y: None
+            height: dp(40)
+            halign: "center"
+
+        GridLayout:
+            cols: 2
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(250)
+
+            Label:
+                text: "Breakfast"
+                font_size: "18sp"
+                bold: True
+                size_hint_y: None
+                height: dp(30)
+
+            Label:
+                id: breakfast_label
+                text: "Choose a goal to see meals"
+                font_size: "16sp"
+                size_hint_y: None
+                height: dp(40)
+
+            Label:
+                text: "Lunch"
+                font_size: "18sp"
+                bold: True
+                size_hint_y: None
+                height: dp(30)
+
+            Label:
+                id: lunch_label
+                text: "Choose a goal to see meals"
+                font_size: "16sp"
+                size_hint_y: None
+                height: dp(40)
+
+            Label:
+                text: "Dinner"
+                font_size: "18sp"
+                bold: True
+                size_hint_y: None
+                height: dp(30)
+
+            Label:
+                id: dinner_label
+                text: "Choose a goal to see meals"
+                font_size: "16sp"
+                size_hint_y: None
+                height: dp(40)
+
+            Label:
+                text: "Snacks"
+                font_size: "18sp"
+                bold: True
+                size_hint_y: None
+                height: dp(30)
+
+            Label:
+                id: snack_label
+                text: "Choose a goal to see meals"
+                font_size: "16sp"
+                size_hint_y: None
+                height: dp(40)
+
+        GridLayout:
+            cols: 2
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(80)
+
+            Button:
+                text: "Save Breakfast"
+                size_hint_x: None
+                width: dp(150)
+                height: dp(40)
+                on_press: root.save_favorite(breakfast_label.text)
+
+            Button:
+                text: "Save Lunch"
+                size_hint_x: None
+                width: dp(150)
+                height: dp(40)
+                on_press: root.save_favorite(lunch_label.text)
+
+            Button:
+                text: "Save Dinner"
+                size_hint_x: None
+                width: dp(150)
+                height: dp(40)
+                on_press: root.save_favorite(dinner_label.text)
+
+            Button:
+                text: "Save Snacks"
+                size_hint_x: None
+                width: dp(150)
+                height: dp(40)
+                on_press: root.save_favorite(snack_label.text)
+
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: dp(15)
+            size_hint_y: None
+            height: dp(60)
+
+            Button:
+                text: "Refresh Meals"
+                font_size: "16sp"
+                size_hint_x: 0.5
+                height: dp(50)
+                on_press: root.update_meals(workout_goal_spinner.text)
+
+            Button:
+                text: "Back to Home"
+                font_size: "16sp"
+                size_hint_x: 0.5
+                height: dp(50)
+                on_press: app.root.current = "home"

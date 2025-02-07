@@ -1,0 +1,59 @@
+<SettingsScreen>:
+    name: "settings"
+
+    BoxLayout:
+        id: settings_box
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(15)
+
+        Label:
+            id: settings_label
+            text: "Settings"
+            font_size: "24sp"
+            bold: True
+            halign: "center"
+
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                id: theme_label
+                text: "Dark Mode"
+            Switch:
+                id: theme_switch
+                on_active: app.root.get_screen("settings").toggle_theme(self.active)
+
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                id: unit_label
+                text: "Units of Measurement"
+            Spinner:
+                id: unit_spinner
+                text: "kg/cm"
+                values: ["kg/cm", "lbs/inches"]
+                on_text: app.root.get_screen("settings").change_units(self.text)
+
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                id: timer_label
+                text: "Timer Mode"
+            Spinner:
+                id: timer_spinner
+                text: "Stopwatch"
+                values: ["Stopwatch", "Countdown"]
+                on_text: app.root.get_screen("settings").change_timer_mode(self.text)
+
+        Button:
+            text: "Logout"
+            size_hint_y: None
+            height: dp(50)
+            background_color: (1, 0, 0, 1)
+            on_release: app.root.get_screen("settings").logout()
+
+        Button:
+            text: "Back to Home"
+            size_hint_y: None
+            height: dp(50)
+            on_release: app.root.get_screen("settings").go_back_home()

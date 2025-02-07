@@ -1,0 +1,74 @@
+<ProfileScreen>:
+    name: "profile"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 15
+
+        Label:
+            text: "User Profile"
+            font_size: 24
+            bold: True
+            size_hint_y: None
+            height: 50
+
+        Label:
+            id: username_label
+            text: "Username: Loading..."
+            font_size: 18
+            size_hint_y: None
+            height: 30
+
+        Label:
+            id: email_label
+            text: "Email: Loading..."
+            font_size: 18
+            size_hint_y: None
+            height: 30
+
+        Label:
+            id: join_date_label
+            text: "Joined: Loading..."
+            font_size: 18
+            size_hint_y: None
+            height: 30
+
+        Label:
+            id: weight_label
+            text: "Weight: Loading..."
+            font_size: 18
+            size_hint_y: None
+            height: 30
+
+        Label:
+            id: height_label
+            text: "Height: Loading..."
+            font_size: 18
+            size_hint_y: None
+            height: 30
+
+        Label:
+            id: body_fat_label
+            text: "Body Fat: Loading..."
+            font_size: 18
+            size_hint_y: None
+            height: 30
+
+        Label:
+            id: bmi_label
+            text: "BMI: Loading..."
+            font_size: 18
+            size_hint_y: None
+            height: 30
+
+        Button:
+            text: "Update Measurements"
+            size_hint_y: None
+            height: 50
+            on_press: root.update_measurements_popup()
+
+        Button:
+            text: "Back to Home"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "home"

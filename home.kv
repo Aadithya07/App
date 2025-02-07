@@ -1,0 +1,94 @@
+<HomeScreen>:
+    name: "home"
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1) if app.theme == "light" else (0.1, 0.1, 0.1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(15)
+
+        Label:
+            text: "Dashboard"
+            font_size: "28sp"
+            bold: True
+            size_hint_y: None
+            height: dp(50)
+            halign: "center"
+            color: (0, 0, 0, 1) if app.theme == "light" else (1, 1, 1, 1)  
+
+        Label:
+            id: workout_summary
+            text: "[b]Workout Summary:[/b]\nLoading..."
+            font_size: "18sp"
+            markup: True
+            color: (0, 0, 0, 1) if app.theme == "light" else (1, 1, 1, 1)
+
+        Label:
+            id: today_goals
+            text: "[b]Today’s Goals:[/b]\nLoading..."
+            font_size: "18sp"
+            markup: True
+            color: (0, 0, 0, 1) if app.theme == "light" else (1, 1, 1, 1)
+
+        Label:
+            id: motivation
+            text: "Stay motivated!"
+            font_size: "16sp"
+            italic: True
+            size_hint_y: None
+            height: dp(40)
+            halign: "center"
+            color: (0, 0, 0, 1) if app.theme == "light" else (1, 1, 1, 1)
+
+        GridLayout:
+            cols: 3
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(200)
+
+            Button:
+                text: "Workouts"
+                font_size: "16sp"
+                background_color: (0.8, 0.8, 0.8, 1) if app.theme == "light" else (0.2, 0.2, 0.2, 1)
+                on_release: root.go_to("workout")
+
+            Button:
+                text: "Teams"
+                font_size: "16sp"
+                background_color: (0.8, 0.8, 0.8, 1) if app.theme == "light" else (0.2, 0.2, 0.2, 1)
+                on_release: root.go_to("teams")
+
+            Button:
+                text: "Meal Plan"
+                font_size: "16sp"
+                background_color: (0.8, 0.8, 0.8, 1) if app.theme == "light" else (0.2, 0.2, 0.2, 1)
+                on_release: root.go_to("mealplan")
+
+            Button:
+                text: "Profile"
+                font_size: "16sp"
+                background_color: (0.8, 0.8, 0.8, 1) if app.theme == "light" else (0.2, 0.2, 0.2, 1)
+                on_release: root.go_to("profile")
+
+            Button:
+                text: "Settings"
+                font_size: "16sp"
+                background_color: (0.8, 0.8, 0.8, 1) if app.theme == "light" else (0.2, 0.2, 0.2, 1)
+                on_release: root.go_to("settings")
+
+            Button:
+                text: "Refresh Summary"
+                font_size: "16sp"
+                background_color: (0.2, 0.6, 1, 1)
+                on_release: root.refresh_summary()
+
+            Button:
+                text: "Reset Summary"
+                font_size: "16sp"
+                background_color: (1, 0, 0, 1)
+                on_release: root.reset_summary()

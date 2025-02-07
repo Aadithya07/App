@@ -1,0 +1,89 @@
+<TeamsScreen>:
+    name: "teams"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(15)
+
+        Label:
+            text: "Teams Management"
+            font_size: "24sp"
+            bold: True
+            halign: "center"
+
+        # Section: Create a Team
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: dp(10)
+
+            TextInput:
+                id: team_name_input
+                hint_text: "Enter Team Name"
+                size_hint_x: 0.7
+
+            Button:
+                text: "Create Team"
+                size_hint_x: 0.3
+                on_release: root.create_team()
+
+        # Section: Join a Team
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: dp(10)
+
+            TextInput:
+                id: team_join_input
+                hint_text: "Enter Team Name to Join"
+                size_hint_x: 0.7
+
+            Button:
+                text: "Join Team"
+                size_hint_x: 0.3
+                on_release: root.join_team()
+
+        # Section: Team Details
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: dp(10)
+
+            Button:
+                text: "View Available Teams"
+                size_hint_x: 0.5
+                on_release: root.load_teams()
+
+            Button:
+                text: "View Team Members"
+                size_hint_x: 0.5
+                on_release: root.show_team_members()
+
+        # Admin Controls (Only if User is Team Admin)
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: dp(10)
+
+            Button:
+                text: "Remove Member"
+                size_hint_x: 0.5
+                on_release: root.remove_member_popup()
+
+            Button:
+                text: "Delete Team"
+                size_hint_x: 0.5
+                background_color: (1, 0, 0, 1)
+                on_release: root.delete_team()
+
+        # Leave Team Button
+        Button:
+            text: "Leave Team"
+            size_hint_y: None
+            height: dp(50)
+            background_color: (1, 0.5, 0, 1)
+            on_release: root.leave_team()
+
+        # Back Button
+        Button:
+            text: "Back to Home"
+            size_hint_y: None
+            height: dp(50)
+            on_release: app.root.current = "home"

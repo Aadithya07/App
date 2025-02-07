@@ -1,0 +1,25 @@
+#:kivy 1.0.9
+<ForgotScreen>:
+    name: "forgot"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+
+        Label:
+            text: "Forgot Password"
+            font_size: 24
+            bold: True
+
+        TextInput:
+            id: username
+            hint_text: "Enter your username"
+            multiline: False
+
+        Button:
+            text: "Reset Password"
+            on_release: app.forgot_password(username.text)
+
+        Button:
+            text: "Back to Login"
+            on_release: app.root.current = "login"

@@ -1,0 +1,89 @@
+#:kivy 1.0.9
+<WorkoutScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+
+        Label:
+            text: "Workout Timer"
+            font_size: '24sp'
+            bold: True
+
+        Label:
+            id: timer_label
+            text: "00:00"
+            font_size: '32sp'
+            bold: True
+
+        BoxLayout:
+            size_hint_y: None
+            height: "40dp"
+            spacing: 10
+
+            Button:
+                text: "Start"
+                on_press: root.start_timer()
+
+            Button:
+                text: "Stop"
+                on_press: root.stop_timer()
+
+            Button:
+                text: "Reset"
+                on_press: root.reset_timer()
+
+        Label:
+            text: "Select Workout Type"
+            font_size: '20sp'
+            bold: True
+
+        Spinner:
+            id: workout_type_spinner
+            text: "Select Workout"
+            values: ["Running", "Cycling", "Yoga", "Weight Training", "Swimming", "HIIT"]
+            size_hint_y: None
+            height: "40dp"
+
+        Label:
+            text: "Calories Burned"
+            font_size: '20sp'
+            bold: True
+
+        Slider:
+            id: calories_slider
+            min: 50
+            max: 10000
+            value: 200
+            step: 10
+            on_value: calories_label.text = f"Calories: {int(self.value)} kcal"
+
+        Label:
+            id: calories_label
+            text: "Calories: 200 kcal"
+            font_size: '18sp'
+
+        Button:
+            text: "Log Workout"
+            size_hint_y: None
+            height: "50dp"
+            on_press: root.log_workout()
+
+        Label:
+            id: workout_log
+            text: ""
+            font_size: '18sp'
+            color: (0, 1, 0, 1)
+
+        ScrollView:
+            Label:
+                id: workout_history
+                text: "Workout History"
+                size_hint_y: None
+                height: self.texture_size[1]
+                markup: True
+        Button:
+            text: "Back to Home"
+            size_hint_y: None
+            height: 50
+            on_press: root.go_back()

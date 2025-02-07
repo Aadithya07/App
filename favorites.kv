@@ -1,0 +1,42 @@
+#:kivy 1.0.9
+
+<FavoritesScreen>:
+    name: "favorites"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Your Favorite Meals"
+            font_size: 22
+            bold: True
+            size_hint_y: None
+            height: 40
+
+        ScrollView:
+            size_hint: (1, 0.7)
+            Label:
+                id: favorites_list
+                text: "No favorites yet!"
+                font_size: 18
+                size_hint_y: None
+                height: self.texture_size[1]
+
+        Button:
+            text: "Clear Favorites"
+            size_hint_y: None
+            height: 50
+            on_press: root.clear_favorites()
+
+        Button:
+            text: "Back to Meal Plan"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "mealplan"
+
+        Button:
+            text: "Back to Home"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "home"

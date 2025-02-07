@@ -1,0 +1,72 @@
+#:kivy 1.0.9
+
+<Auth>:
+    name: "auth"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(10)
+        size_hint: 0.8, 0.8
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+        Label:
+            text: "Welcome to Fitness App"
+            font_size: "20sp"
+            bold: True
+            size_hint_y: None
+            height: dp(35)
+            halign: "center"
+
+        GridLayout:
+            cols: 1
+            spacing: dp(8)
+            size_hint_y: None
+            height: dp(100)
+
+            TextInput:
+                id: username
+                hint_text: "Username"
+                size_hint_y: None
+                height: dp(35)
+                font_size: "16sp"
+                multiline: False
+
+            TextInput:
+                id: password
+                hint_text: "Password"
+                password: True
+                size_hint_y: None
+                height: dp(35)
+                font_size: "16sp"
+                multiline: False
+
+        Label:
+            id: status_label
+            text: ""
+            font_size: "14sp"
+            color: (1, 0, 0, 1)  # Red for errors
+            size_hint_y: None
+            height: dp(20)
+
+        Button:
+            text: "Login"
+            size_hint_y: None
+            height: dp(40)
+            font_size: "16sp"
+            on_release: root.login()
+
+        Button:
+            text: "Register"
+            size_hint_y: None
+            height: dp(40)
+            font_size: "16sp"
+            on_release: root.open_register_popup()
+
+        Button:
+            text: "Forgot Password?"
+            size_hint_y: None
+            height: dp(35)
+            font_size: "14sp"
+            background_color: (0.7, 0.7, 0.7, 1)
+            on_release: root.forgot_password()

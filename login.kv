@@ -1,0 +1,35 @@
+#:kivy 1.0.9
+<LoginScreen>:
+    name: "login"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+
+        Label:
+            text: "Login"
+            font_size: 24
+            bold: True
+
+        TextInput:
+            id: username
+            hint_text: "Username"
+            multiline: False
+
+        TextInput:
+            id: password
+            hint_text: "Password"
+            password: True
+            multiline: False
+
+        Button:
+            text: "Login"
+            on_release: root.login(username.text, password.text)
+
+        Button:
+            text: "Signup"
+            on_release: app.root.current = "signup"
+
+        Button:
+            text: "Forgot Password?"
+            on_release: app.root.current = "forgot"
